@@ -1,1 +1,97 @@
+# Interactive Calculator and Unit Converter
 
+def calculator():
+    while True:
+        print("\n===== BASIC CALCULATOR =====")
+        print("1. Addition (+)")
+        print("2. Subtraction (-)")
+        print("3. Multiplication (*)")
+        print("4. Division (/)")
+        print("5. Unit Converter")
+        print("6. Exit")
+
+        choice = input("Enter your choice (1-6): ").strip()
+
+        if choice == "6":
+            print("Thank you for using the calculator!")
+            break
+
+        if choice == "5":
+            unit_converter()
+            continue
+
+        if choice not in ["1", "2", "3", "4"]:
+            print("Invalid choice! Please enter a number from 1 to 6.")
+            continue
+
+        # Validate the first number
+        while True:
+            try:
+                num1 = float(input("Enter the first number: "))
+                break
+            except ValueError:
+                print("Invalid input! Please enter a valid number.")
+
+        # Validate the second number
+        while True:
+            try:
+                num2 = float(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Invalid input! Please enter a valid number.")
+
+        if choice == "1":
+            result = num1 + num2
+            print("Result:", result)
+
+        elif choice == "2":
+            result = num1 - num2
+            print("Result:", result)
+
+        elif choice == "3":
+            result = num1 * num2
+            print("Result:", result)
+
+        elif choice == "4":
+            if num2 == 0:
+                print("Error! Division by zero is not allowed.")
+            else:
+                result = num1 / num2
+                print("Result:", result)
+
+
+def unit_converter():
+    while True:
+        print("\n===== UNIT CONVERTER =====")
+        print("1. Kilometers to Miles")
+        print("2. Celsius to Fahrenheit")
+        print("3. Back to Main Menu")
+
+        choice = input("Enter your choice (1-3): ").strip()
+
+        if choice == "3":
+            break
+
+        if choice not in ["1", "2"]:
+            print("Invalid choice! Please select 1, 2, or 3.")
+            continue
+
+        while True:
+            try:
+                value = float(input("Enter the value to convert: "))
+                break
+            except ValueError:
+                print("Invalid input! Please enter a valid number.")
+
+        if choice == "1":
+            miles = value * 0.621371
+            print(f"{value} kilometers = {miles:.2f} miles")
+
+        elif choice == "2":
+            fahrenheit = (value * 9 / 5) + 32
+            print(f"{value} Celsius = {fahrenheit:.2f} Fahrenheit")
+
+
+# Run the program
+if __name__ == "__main__":
+    calculator()
